@@ -12,23 +12,28 @@ interface Piece {
 }
 
 const SortablePiece: React.FC<{ id: string; imageSrc: string; size: number; row: number; col: number; }> = ({ id, imageSrc, size, row, col }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
+
   const style = {
     backgroundImage: `url(${imageSrc})`,
     backgroundPosition: `${(col * 100) / (size - 1)}% ${(row * 100) / (size - 1)}%`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: `${size * 100}% ${size * 100}%`,
     border: '1px solid #ccc',
+    boxShadow: isDragging ? '0 0 10px rgba(0, 0, 0, 0.5)' : 'none',
     height: `${100 / size}%`,
+    opacity: isDragging ? 0.5 : 1,
     transform: CSS.Transform.toString(transform),
     transition,
     width: `${100 / size}%`
   };
+
   return <div ref={setNodeRef} style={style} {...attributes} {...listeners} className="puzzle-piece" />;
 };
 
 const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => void }> = ({ imageSrc, level, onRestart }) => {
   const size = Math.sqrt(level);
+
   const initialPieces = useMemo(() => {
     const arr: Piece[] = [];
     let id = 0;
@@ -51,20 +56,21 @@ const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => 
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
-    useSensor(TouchSensor, { activationConstraint: { delay: 100, tolerance: 5 } })
+    useSensor(TouchSensor, { activationConstraint: { delay: 0, tolerance: 1 } })
   );
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
-    if (active.id !== over?.id) return;
+    if (active.id !== over.id) {
+      const oldIndex = pieces.findIndex(p => p.id === active.id);
+      const newIndex = pieces.findIndex(p => p.id === over.id);
+      const newPieces = arrayMove(pieces, oldIndex, newIndex);
+      setPieces(newPieces);
 
-    const oldIndex = pieces.findIndex(p => p.id === active.id);
-    const newIndex = pieces.findIndex(p => p.id === over.id);
-    const newPieces = arrayMove(pieces, oldIndex, newIndex);
-    setPieces(newPieces);
-    if (newPieces.every((p, i) => p.id === i.toString())) {
-      confetti();
-      setSolved(true);
+      if (newPieces.every((p, i) => p.id === i.toString())) {
+        confetti();
+        setSolved(true);
+      }
     }
   };
 
@@ -95,7 +101,14 @@ const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => 
         <SortableContext items={pieces.map(p => p.id)} strategy={rectSortingStrategy}>
           <div className="puzzle-board">
             {pieces.map(piece => (
-              <SortablePiece key={piece.id} id={piece.id} imageSrc={imageSrc} size={size} row={piece.row} col={piece.col} />
+              <SortablePiece
+                key={piece.id}
+                id={piece.id}
+                imageSrc={imageSrc}
+                size={size}
+                row={piece.row}
+                col={piece.col}
+              />
             ))}
           </div>
         </SortableContext>

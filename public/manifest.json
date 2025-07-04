@@ -3,8 +3,8 @@
   "short_name": "Puzzle",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#272944",
-  "theme_color": "#272944",
+  "background_color": "#d0a9f5",
+  "theme_color": "#d0a9f5",
   "lang": "es",
   "orientation": "portrait",
   "icons": [
