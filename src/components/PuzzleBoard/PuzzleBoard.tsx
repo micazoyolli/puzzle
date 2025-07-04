@@ -53,8 +53,8 @@ const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => 
   }, [initialPieces]);
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(TouchSensor)
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 100, tolerance: 5 } })
   );
 
   const handleDragEnd = (event: any) => {
@@ -94,7 +94,13 @@ const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => 
         </section>
       </div>
 
-      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+        autoScroll={true}
+        modifiers={[]}
+      >
         <SortableContext items={pieces.map(p => p.id)} strategy={rectSortingStrategy}>
           <div className="puzzle-board">
             {pieces.map(piece => (
