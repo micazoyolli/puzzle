@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { DndContext, PointerSensor, useSensor, useSensors, closestCenter } from '@dnd-kit/core';
+import { DndContext, PointerSensor, TouchSensor, useSensor, useSensors, closestCenter } from '@dnd-kit/core';
 import { SortableContext, arrayMove, useSortable, rectSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import confetti from 'canvas-confetti';
@@ -49,19 +49,22 @@ const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => 
     setSolved(false);
   }, [initialPieces]);
 
-  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 100, tolerance: 5 } })
+  );
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
-    if (active.id !== over.id) {
-      const oldIndex = pieces.findIndex(p => p.id === active.id);
-      const newIndex = pieces.findIndex(p => p.id === over.id);
-      const newPieces = arrayMove(pieces, oldIndex, newIndex);
-      setPieces(newPieces);
-      if (newPieces.every((p, i) => p.id === i.toString())) {
-        confetti();
-        setSolved(true);
-      }
+    if (active.id !== over?.id) return;
+
+    const oldIndex = pieces.findIndex(p => p.id === active.id);
+    const newIndex = pieces.findIndex(p => p.id === over.id);
+    const newPieces = arrayMove(pieces, oldIndex, newIndex);
+    setPieces(newPieces);
+    if (newPieces.every((p, i) => p.id === i.toString())) {
+      confetti();
+      setSolved(true);
     }
   };
 
