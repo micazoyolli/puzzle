@@ -39,6 +39,14 @@ button {
   }
 }
 
+a {
+  color: $color-text;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
 footer {
   margin-top: auto;
   padding: 1rem;
