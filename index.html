@@ -1,15 +1,55 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#d0a9f5" />
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- SEO general -->
+    <meta name="author" content="@micazoyolli" />
+    <meta name="robots" content="index, follow" />
     <title>Puzzle</title>
+    <meta name="title" content="Puzzle" />
+    <meta name="description" content="Juego interactivo de rompecabezas desarrollado en React. Elige una imagen, nivel de dificultad y arma el puzzle con drag & drop. ¡Incluye confetti al completarlo!" />
+    <meta name="keywords" content="puzzle, rompecabezas, juego interactivo, drag and drop, React, TypeScript, SCSS, confetti, responsive, juego educativo, juego divertido" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Puzzle" />
+    <meta property="og:description" content="Juego interactivo de rompecabezas con selección de imagen, nivel y animación final. ¡Arma tu puzzle con estilo!" />
+    <meta property="og:url" content="https://micazoyolli.github.io/puzzle/" />
+    <meta property="og:site_name" content="Puzzle" />
+    <meta property="og:image" content="https://micazoyolli.github.io/puzzle/meta.jpg" />
+    <meta property="og:image:secure_url" content="https://micazoyolli.github.io/puzzle/meta.jpg" />
+    <meta property="og:image:width" content="500" />
+    <meta property="og:image:height" content="500" />
+    <meta property="og:image:type" content="image/jpeg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Puzzle" />
+    <meta name="twitter:description" content="Arma un rompecabezas interactivo y celebra con confetti. ¡Ideal para ejercitar la mente y divertirse!" />
+    <meta name="twitter:image" content="https://micazoyolli.github.io/puzzle/meta.jpg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://micazoyolli.github.io/puzzle/" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" crossorigin />
+    <link rel="apple-touch-icon" href="https://micazoyolli.github.io/puzzle/meta.jpg" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Puzzle" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- Tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
   </head>
   <body>
+    <noscript>Debes habilitar JavaScript para ver esta página correctamente.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -22,11 +22,14 @@ Juego interactivo de rompecabezas con React, TypeScript y SCSS, desarrollado con
 snake/
 ├── public/
 │   ├── assets/
+│   ├── icons/
+│   ├── favicon.ico
 │   ├── manifest.json
-│   └── robots.txt
+│   ├── meta.jpg
+│   ├── robots.txt
+│   └── sitemap.xml
 ├── src/
 │   ├── assets/
-│   │   ├── puzzles/
 │   ├── components/
 │   │   ├── ModalSelector/
 │   │   └── PuzzleBoard/
@@ -35,12 +38,14 @@ snake/
 │   │   └── _variables.scss
 │   ├── App.tsx
 │   └── main.tsx
-├── index.html
+├── .editorconfig
 ├── .gitignore
+├── .nvmrc
+├── index.html
 ├── LICENSE
 ├── package.json
 ├── tsconfig.json
-└── vite.config.ts
+└── vite.config.js
 ```
 
 ## ▶️ Uso
