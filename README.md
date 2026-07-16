@@ -12,9 +12,11 @@ Juego interactivo de rompecabezas con React, TypeScript y SCSS, desarrollado con
 
 - React + TypeScript (ES6+)
 - SCSS modular
-- Vite
+- Vite 8
 - @dnd-kit/core + @dnd-kit/sortable
 - canvas-confetti
+- Node 24
+- @micazoyolli/foundation para SEO/build y reduced motion
 
 ## 📦 Estructura del proyecto
 
@@ -53,6 +55,9 @@ snake/
 ```bash
 yarn install
 yarn dev
+yarn lint
+yarn typecheck
+yarn build
 ```
 
 Abre `http://localhost:5173/puzzle/` para jugar.

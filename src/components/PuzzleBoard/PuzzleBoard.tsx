@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { DndContext, PointerSensor, TouchSensor, useSensor, useSensors, closestCenter } from '@dnd-kit/core';
+import { DndContext, PointerSensor, TouchSensor, useSensor, useSensors, closestCenter, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove, useSortable, rectSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import confetti from 'canvas-confetti';
@@ -42,7 +42,7 @@ const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => 
       }
     }
     return arr.sort(() => Math.random() - 0.5);
-  }, [level]);
+  }, [size]);
 
   const [pieces, setPieces] = useState<Piece[]>(initialPieces);
   const [solved, setSolved] = useState(false);
@@ -57,9 +57,9 @@ const PuzzleBoard: React.FC<{ imageSrc: string; level: number; onRestart: () => 
     useSensor(TouchSensor, { activationConstraint: { delay: 100, tolerance: 5 } })
   );
 
-  const handleDragEnd = (event: any) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-    if (active.id !== over?.id) {
+    if (over && active.id !== over.id) {
       const oldIndex = pieces.findIndex(p => p.id === active.id);
       const newIndex = pieces.findIndex(p => p.id === over.id);
       const newPieces = arrayMove(pieces, oldIndex, newIndex);
