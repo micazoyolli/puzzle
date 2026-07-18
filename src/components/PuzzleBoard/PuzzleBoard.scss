@@ -79,6 +79,7 @@
 
   .puzzle-piece {
     background-size: cover;
+    border: 1px solid $color-piece-border;
     cursor: pointer;
     transition: transform 0.3s ease;
   }

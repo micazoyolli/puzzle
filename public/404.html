@@ -12,15 +12,14 @@
     <meta name="twitter:card" content="summary" />
     <link rel="canonical" href="https://micazoyolli.github.io/puzzle/404" />
     <link rel="icon" href="/puzzle/favicon.ico" />
-    <style>
-      body{align-items:center;background:#d0a9f5;color:#362246;display:grid;font-family:Chewy,system-ui,sans-serif;margin:0;min-height:100dvh;padding:1rem;place-items:center;text-align:center}
-      main{max-width:34rem}
-      .code{font-size:clamp(4rem,18vw,8rem);line-height:.9;margin:0}
-      h1{font-size:clamp(2rem,8vw,3.5rem);line-height:1;margin:.75rem 0}
-      p{font-family:system-ui,sans-serif;line-height:1.6;margin:0 0 1.5rem}
-      a{background:#362246;border-radius:999px;color:#fff;display:inline-flex;font-family:system-ui,sans-serif;font-weight:800;min-height:44px;padding:.75rem 1.15rem;text-decoration:none}
-      a:focus-visible{outline:3px solid #fff;outline-offset:4px}
-    </style>
+    <link rel="stylesheet" href="/puzzle/404.css" />
   </head>
-  <body><main><p class="code">404</p><h1>Pieza perdida</h1><p>Este enlace no encaja en el rompecabezas.</p><a href="/puzzle/">Volver al puzzle</a></main></body>
+  <body class="not-found">
+    <main class="not-found__panel" aria-labelledby="not-found-title">
+      <p class="not-found__code">404</p>
+      <h1 class="not-found__title" id="not-found-title">Pieza perdida</h1>
+      <p class="not-found__text">Este enlace no encaja en el rompecabezas.</p>
+      <a class="not-found__link" href="/puzzle/">Volver al puzzle</a>
+    </main>
+  </body>
 </html>

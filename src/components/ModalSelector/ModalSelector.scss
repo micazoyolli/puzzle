@@ -46,7 +46,7 @@
     margin-top: 1rem;
 
     &:disabled {
-      background: #ccc;
+      background: $color-disabled;
       cursor: not-allowed;
     }
 

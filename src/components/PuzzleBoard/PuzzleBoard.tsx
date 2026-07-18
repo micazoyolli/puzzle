@@ -19,7 +19,6 @@ const SortablePiece: React.FC<{ id: string; imageSrc: string; size: number; row:
     backgroundPosition: `${(col * 100) / (size - 1)}% ${(row * 100) / (size - 1)}%`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: `${size * 100}% ${size * 100}%`,
-    border: '1px solid #ccc',
     height: `${100 / size}%`,
     width: `${100 / size}%`,
     transform: CSS.Transform.toString(transform),
