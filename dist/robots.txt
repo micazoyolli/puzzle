@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /puzzle/
+Sitemap: https://micazoyolli.github.io/puzzle/sitemap.xml
