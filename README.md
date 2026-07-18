@@ -2,7 +2,7 @@
 
 Juego interactivo de rompecabezas con React, TypeScript y SCSS, desarrollado con estructura modular y Vite. Permite seleccionar imagen, nivel (número de piezas) y armar el puzzle mediante drag & drop. Incluye confetti al completar el puzzle, botón para volver a jugar y diseño responsive.
 
-<img alt="Puzzle" src="https://github.com/micazoyolli/puzzle/blob/master/public/assets/screenshot.png" width="500" />
+<img alt="Puzzle" src="https://github.com/micazoyolli/puzzle/blob/main/public/assets/screenshot.png" width="500" />
 
 ## 🌐 Demo
 
