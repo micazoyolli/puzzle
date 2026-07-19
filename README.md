@@ -21,7 +21,7 @@ Juego interactivo de rompecabezas con React, TypeScript y SCSS, desarrollado con
 ## 📦 Estructura del proyecto
 
 ```
-snake/
+puzzle/
 ├── public/
 │   ├── assets/
 │   ├── icons/
@@ -61,6 +61,12 @@ yarn build
 ```
 
 Abre `http://localhost:5173/puzzle/` para jugar.
+
+## Despliegue en GitHub Pages
+
+Este proyecto se publica en GitHub Pages desde la rama `gh-pages`. El comando `yarn deploy` compila la aplicación, limpia archivos `.DS_Store` del build y publica `dist/` usando el CLI de Micazoyolli Foundation sin crear commits de despliegue en `main`.
+
+La configuración `base` de Vite debe conservar la subruta del repositorio: `/puzzle/`.
 
 ## 🧠 Funcionalidad
 
