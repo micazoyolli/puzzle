@@ -34,12 +34,15 @@
   }
 
   &__link {
+    align-items: center;
     background: $color-text;
     border-radius: 999px;
+    box-sizing: border-box;
     color: $color-text-inverse;
     display: inline-flex;
     font-family: system-ui, sans-serif;
     font-weight: 800;
+    justify-content: center;
     min-height: 44px;
     padding: 0.75rem 1.15rem;
     text-decoration: none;
